@@ -29,14 +29,6 @@ export default class App extends Component {
           let nextElement = document.getElementById(
             `element_${this.state.currentHoverIndex + 1}`
           );
-          console.log(
-            filterIndexMax,
-            "filterIndexMax DOWN",
-            this.state.currentHoverIndex,
-            "state.currentHoverIndex DOWN",
-            this.state.currentHoverIndex + 1,
-            "nextCurrentHoverState DOWN"
-          );
           if (currentElement) currentElement.classList.remove("hovering");
           if (nextElement) {
             nextElement.classList.add("hovering");
@@ -66,20 +58,12 @@ export default class App extends Component {
           let prevElement = document.getElementById(
             `element_${this.state.currentHoverIndex - 1}`
           );
-          console.log(
-            filterIndexMax,
-            "filterIndexMax UP",
-            this.state.currentHoverIndex,
-            "state.currentHoverIndex UP",
-            this.state.currentHoverIndex - 1,
-            "nextCurrentHoverState UP"
-          );
           if (currentElement) currentElement.classList.remove("hovering");
           if (prevElement) {
             prevElement.classList.add("hovering");
             prevElement.scrollIntoView({
               behavior: "smooth",
-              block: "end",
+              block: "start",
               inline: "nearest"
             });
           }

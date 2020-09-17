@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 
 const SearchComponent = (props) => {
   var renderSearchResults = null;
-
   const inputRef = useRef(null);
+
   const handleCancel = () => {
     inputRef.current.value = "";
     props.onCancelClick();
@@ -18,12 +18,6 @@ const SearchComponent = (props) => {
     if (event && event.target) {
       event.persist();
     }
-    console.log(
-      props.currentHoverIndex,
-      "currentHoverIndex",
-      index,
-      "index entered"
-    );
     let currentElement = document.getElementById(
       `element_${props.currentHoverIndex}`
     );
@@ -33,7 +27,7 @@ const SearchComponent = (props) => {
       element.classList.add("hovering");
       element.scrollIntoView({
         behavior: "smooth",
-        block: "end",
+        block: index < props.currentHoverIndex ? "start" : "end",
         inline: "nearest"
       });
     }
@@ -41,7 +35,6 @@ const SearchComponent = (props) => {
   };
 
   const handleMouseLeave = (event, index) => {
-    console.log(index, "index on leave");
     if (event && event.target) {
       event.persist();
     }
