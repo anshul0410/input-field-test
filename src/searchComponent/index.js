@@ -10,13 +10,25 @@ const SearchComponent = (props) => {
   };
 
   const handleMouseEnter = (event, index) => {
-    console.log(index, "index here");
+    if (
+      props.currentHoverIndex === index &&
+      document.getElementById(`element_${index}`).classList.contains("hovering")
+    )
+      return;
     if (event && event.target) {
       event.persist();
     }
-    let currentElement = document.getElementById(props.currentHoverIndex);
+    console.log(
+      props.currentHoverIndex,
+      "currentHoverIndex",
+      index,
+      "index entered"
+    );
+    let currentElement = document.getElementById(
+      `element_${props.currentHoverIndex}`
+    );
     if (currentElement) currentElement.classList.remove("hovering");
-    let element = document.getElementById(event.target.id);
+    let element = document.getElementById(`element_${index}`);
     if (element) {
       element.classList.add("hovering");
       element.scrollIntoView({
@@ -33,7 +45,7 @@ const SearchComponent = (props) => {
     if (event && event.target) {
       event.persist();
     }
-    let element = document.getElementById(event.target.id);
+    let element = document.getElementById(`element_${index}`);
     if (element) {
       element.classList.remove("hovering");
     }
@@ -43,7 +55,7 @@ const SearchComponent = (props) => {
     if (props.filteredData.length) {
       renderSearchResults = props.filteredData.map((item, index) => (
         <div
-          onMouseEnter={(event) => handleMouseEnter(event, index)}
+          onMouseOver={(event) => handleMouseEnter(event, index)}
           onMouseLeave={(event) => handleMouseLeave(event, index)}
           className="searchCardMain"
           key={`searchResult_${item.id}`}
