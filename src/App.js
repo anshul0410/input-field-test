@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import { data } from "../mockData";
+import { data } from "./mockData";
 import SearchComponent from "./searchComponent";
 
 export default class App extends Component {
@@ -19,7 +19,6 @@ export default class App extends Component {
 
   handleKeyDown = (event) => {
     if (this.state.filteredData && this.state.filteredData.length) {
-      console.log(event.keyCode, "keypress");
       let filterIndexMax = this.state.filteredData.length - 1;
       if (event.keyCode === 40) {
         if (filterIndexMax === this.state.currentHoverIndex) return;
