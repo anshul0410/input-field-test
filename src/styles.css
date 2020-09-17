@@ -5,7 +5,7 @@
 
 .SearchComponentMainStyle {
   background-color: #fff;
-  width: 50%;
+  width: 60%;
   box-shadow: 2px 2px 1px #d6d6d6;
   border-left: 1px solid #d6d6d6;
 }
@@ -17,7 +17,7 @@
   border: none;
   outline: none;
   caret-color: #58d68d;
-  font-size: 18px;
+  font-size: 16px;
   text-indent: 35px;
 }
 .SearchComponentMainStyle .InputDiv {

@@ -80,6 +80,7 @@ const SearchComponent = (props) => {
           className="Input"
           type="text"
           onChange={props.onChange}
+          placeholder="Search users by name, address..."
         />
         <i
           onClick={() => handleCancel()}
