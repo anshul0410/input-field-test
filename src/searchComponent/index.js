@@ -14,6 +14,8 @@ const SearchComponent = (props) => {
     if (event && event.target) {
       event.persist();
     }
+    let currentElement = document.getElementById(props.currentHoverIndex);
+    if (currentElement) currentElement.classList.remove("hovering");
     let element = document.getElementById(event.target.id);
     if (element) {
       element.classList.add("hovering");
@@ -27,6 +29,7 @@ const SearchComponent = (props) => {
   };
 
   const handleMouseLeave = (event, index) => {
+    console.log(index, "index on leave");
     if (event && event.target) {
       event.persist();
     }

@@ -30,6 +30,14 @@ export default class App extends Component {
           let nextElement = document.getElementById(
             `element_${this.state.currentHoverIndex + 1}`
           );
+          console.log(
+            filterIndexMax,
+            "filterIndexMax DOWN",
+            this.state.currentHoverIndex,
+            "state.currentHoverIndex DOWN",
+            this.state.currentHoverIndex + 1,
+            "nextCurrentHoverState DOWN"
+          );
           if (currentElement) currentElement.classList.remove("hovering");
           if (nextElement) {
             nextElement.classList.add("hovering");
@@ -47,13 +55,25 @@ export default class App extends Component {
           });
         }
       } else if (event.keyCode === 38) {
-        if (this.state.currentHoverIndex === 0) return;
+        if (
+          this.state.currentHoverIndex === 0 ||
+          this.state.currentHoverIndex === -1
+        )
+          return;
         else {
           let currentElement = document.getElementById(
             `element_${this.state.currentHoverIndex}`
           );
           let prevElement = document.getElementById(
             `element_${this.state.currentHoverIndex - 1}`
+          );
+          console.log(
+            filterIndexMax,
+            "filterIndexMax UP",
+            this.state.currentHoverIndex,
+            "state.currentHoverIndex UP",
+            this.state.currentHoverIndex - 1,
+            "nextCurrentHoverState UP"
           );
           if (currentElement) currentElement.classList.remove("hovering");
           if (prevElement) {
@@ -91,9 +111,17 @@ export default class App extends Component {
           else return false;
         })
         .filter((item) => item);
-      this.setState({ filteredData: filter, inputString: event.target.value });
+      this.setState({
+        filteredData: filter,
+        inputString: event.target.value,
+        currentHoverIndex: -1
+      });
     } else {
-      this.setState({ filteredData: false, inputString: "" });
+      this.setState({
+        filteredData: false,
+        inputString: "",
+        currentHoverIndex: -1
+      });
     }
   };
   render() {
@@ -108,6 +136,7 @@ export default class App extends Component {
           updateCurrentHoverIndex={(index) =>
             this.setState({ currentHoverIndex: index })
           }
+          currentHoverIndex={this.state.currentHoverIndex}
         />
       </div>
     );
