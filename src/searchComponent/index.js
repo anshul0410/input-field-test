@@ -55,7 +55,7 @@ const SearchComponent = (props) => {
     if (props.filteredData.length) {
       renderSearchResults = props.filteredData.map((item, index) => (
         <div
-          onMouseOver={(event) => handleMouseEnter(event, index)}
+          onMouseEnter={(event) => handleMouseEnter(event, index)}
           onMouseLeave={(event) => handleMouseLeave(event, index)}
           className="searchCardMain"
           key={`searchResult_${item.id}`}
