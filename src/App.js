@@ -106,8 +106,13 @@ export default class App extends Component {
           else if (item.id.toLowerCase().includes(inputText)) return item;
           else if (item.address.toLowerCase().includes(inputText)) return item;
           else if (item.pincode.toLowerCase().includes(inputText)) return item;
-          else if (item.items.includes(inputText)) return item;
-          else return false;
+          else if (item.items.length) {
+            let check = item.items.filter((itm) =>
+              itm.toLowerCase().includes(inputText)
+            );
+            if (check.length) return { ...item, foundInItems: true };
+            else return false;
+          } else return false;
         })
         .filter((item) => item);
       this.setState({

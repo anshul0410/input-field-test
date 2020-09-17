@@ -63,6 +63,11 @@ const SearchComponent = (props) => {
         >
           <p className="Id">{item.id}</p>
           <p className="Name">{item.name}</p>
+          {item.foundInItems ? (
+            <p className="Items">
+              <span>{inputRef.current.value}</span> found in items
+            </p>
+          ) : null}
           <p className="Address">{item.address}</p>
         </div>
       ));

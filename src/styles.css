@@ -64,8 +64,19 @@
   position: relative;
   top: -10px;
 }
+.searchResultMainDiv .searchCardMain .Items {
+  font-size: 15px;
+  position: relative;
+  top: -8px;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 5px 0;
+}
+.searchResultMainDiv .searchCardMain .Items span {
+  color: blue;
+}
 .searchResultMainDiv .searchCardMain .Address {
-  font-size: 16px;
+  font-size: 15px;
   color: #808b96;
   position: relative;
   top: -10px;
@@ -74,4 +85,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 16px;
+  padding: 15px;
 }
